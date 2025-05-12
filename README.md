@@ -4,7 +4,7 @@ Here the sonic pi values should change based on how close you bring your fingers
 
 # Step 1
 
-`git clone repo`
+`git clone https://github.com/ajaibghar-co/kf-handpose.git`
 
 # Step 2
 ```bash
