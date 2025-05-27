@@ -23,15 +23,23 @@ live_loop :osc_rec do
   use_real_time
   a, b, c, d = sync "/osc*/p5js"
 
-  note = (40 + (a / 640.0) * 60).to_i
+ ## play sample as per if condition for d value (pinky-thumb)
+  if d >= 40 and d < 60
+    sample :loop_weirdo
+  end
 
-  ## please fix the mapping
-  cutoff = (60 + (b / 480.0) * 60).to_i
-  sustain = c
-  release = release
-  ##| puts "Note: #{note}, Cutoff: #{cutoff}, Sustain: #{sustain}"
+## play midi note that's equal to integer value of a (index-thumb)
+  note = a.to_i
+  
+  co = (60 + (b / 480.0) * 60).to_i
+  sus = c
+  rel = d
+  sleep 0.125
+  synth :dark_ambience, note: note, cutoff: 90, sustain: sus,
+    release: rel, amp: d/100
 
-  synth :prophet, note: note, cutoff: cutoff, sustain: sustain, release: release
+##to print values
+#puts "note: #{note}, cutoff: #{co}, sustain: #{sus}"
 end
 ```
 Hit "run"
