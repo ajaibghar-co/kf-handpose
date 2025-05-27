@@ -8,7 +8,7 @@ Here the sonic pi values should change based on how close you bring your fingers
 
 # Step 2
 ```bash
-cd sonic-osc-p5
+cd kf-handpose
 npm i
 npm run start
 ```
