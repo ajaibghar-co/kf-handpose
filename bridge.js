@@ -1,12 +1,17 @@
 var osc = require("node-osc");
 var io = require("socket.io")(8081);
+const express = require("express");
+const app = express();
+const port = 4567;
+
+app.use(express.static("public"));
 
 var oscServer, oscClient;
 
 var isConnected = false;
 
 io.sockets.on("connection", function (socket) {
-  console.log("connection");
+  console.log("connection established");
   socket.on("config", function (obj) {
     isConnected = true;
     oscServer = new osc.Server(obj.server.port, obj.server.host);
@@ -26,4 +31,8 @@ io.sockets.on("connection", function (socket) {
       oscClient.kill();
     }
   });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
