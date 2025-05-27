@@ -36,6 +36,10 @@ function setup() {
   video.hide();
   // start detecting hands from the webcam video
   handPose.detectStart(video, gotHands);
+  // textWrap(CHAR);
+  rectMode(CORNERS);
+  // textAlign(CENTER, CENTER);
+  angleMode(DEGREES);
 }
 
 function draw() {
@@ -62,6 +66,7 @@ function draw() {
     let d2 = dist(mid.x, mid.y, thumb.x, thumb.y);
     let d3 = dist(ring.x, ring.y, thumb.x, thumb.y);
     let d4 = dist(pinky.x, pinky.y, thumb.x, thumb.y);
+
     console.log({
       d1: d1,
       d2: d2,
@@ -69,6 +74,13 @@ function draw() {
       d4: d4,
     });
     sendOsc("/p5js", [d1, d2, d3, d4]);
+    textSize(d4);
+    let midX = (thumb.x + pinky.x) / 2;
+    let midY = (thumb.y + pinky.y) / 2;
+    push();
+    // rotate(midX);
+    text(":loop_weirdo", thumb.x, thumb.y);
+    pop();
   }
 }
 
