@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bridge.js && npx http-server public/ -p 4567"
+    "start": "node bridge.js"
   },
   "keywords": [],
   "author": "",
