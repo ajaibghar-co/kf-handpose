@@ -51,4 +51,8 @@ Hit "run"
 Open `localhost:4567`
 
 Move hands! 🙌 ✋
-![hands](handpose.png)
+
+
+https://github.com/user-attachments/assets/0adbbca4-49bc-4309-83a9-7f8d3394f25f
+
+
