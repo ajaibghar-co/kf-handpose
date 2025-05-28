@@ -1,6 +1,9 @@
-Connecting OSC signal from p5js > sonic Pi
-
+# Connecting OSC signal from p5.js > Sonic Pi
 Here the sonic pi values should change based on how close you bring your fingers to your thumb. Each value is assigned to specific finger.
+
+# Step 0
+
+Install [node.js](https://nodejs.org/en)
 
 # Step 1
 
