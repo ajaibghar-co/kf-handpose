@@ -16,6 +16,8 @@ npm i
 npm run start
 ```
 
+If you have run this project before you don't need to run `npm i` command. 
+
 # Step 3
 Open Sonic Pi
 
