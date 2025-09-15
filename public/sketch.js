@@ -9,6 +9,7 @@
 let handPose;
 let video;
 let hands = [];
+let thumbText = "मल्हार";
 let opts = {
   maxHands: 1,
   flipped: true,
@@ -27,12 +28,16 @@ let bVerbose = false;
 let socket;
 
 function setup() {
-  createCanvas(640, 480);
+  let cnv = createCanvas(windowWidth, windowHeight);
+  // background(81);
+
+  // const main = document.getElementsbyTagName("main")[0];
+  // main.addClass("fixed top-0 left-0");
   setupOsc("http://127.0.0.1:8081", 12000, 4560);
 
   // Create the webcam video and hide it
   video = createCapture(VIDEO, { flipped: true });
-  video.size(640, 480);
+  video.size(width, height);
   video.hide();
   // start detecting hands from the webcam video
   handPose.detectStart(video, gotHands);
@@ -44,14 +49,14 @@ function setup() {
 
 function draw() {
   // Draw the webcam video
-
+  // translate(width / 2 - video.width / 2, height / 2 - video.height / 2);
   image(video, 0, 0, width, height);
 
   // Draw all the tracked hand points
   for (let i = 0; i < hands.length; i++) {
     let hand = hands[i];
     // console.log(hand);
-    fill(255, 0, 190);
+    fill(183, 148, 244, 125);
     ind = hand.index_finger_tip;
     mid = hand.middle_finger_tip;
     ring = hand.ring_finger_tip;
@@ -79,7 +84,8 @@ function draw() {
     let midY = (thumb.y + pinky.y) / 2;
     push();
     // rotate(midX);
-    text(":loop_weirdo", thumb.x, thumb.y);
+    fill(183, 148, 244);
+    text(thumbText, ind.x, ind.y);
     pop();
   }
 }
@@ -105,4 +111,20 @@ function setupOsc(oscHost, oscPortIn, oscPortOut) {
       client: { port: oscPortOut, host: "127.0.0.1" },
     });
   });
+}
+
+function showTab(tabName) {
+  // Hide all tab contents
+  document.querySelectorAll(".tab-content").forEach((content) => {
+    content.classList.remove("active");
+  });
+
+  // Remove active class from all tabs
+  document.querySelectorAll(".tab").forEach((tab) => {
+    tab.classList.remove("active");
+  });
+
+  // Show selected tab content and mark tab as active
+  document.getElementById(tabName).classList.add("active");
+  event.target.classList.add("active");
 }
